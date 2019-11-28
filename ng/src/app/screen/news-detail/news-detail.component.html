@@ -1,0 +1,4 @@
+<h2 mat-dialog-title>{{ data.headline }}</h2>
+<mat-dialog-content style="max-height: 180px;" *ngIf="newsDetail">
+  <span [innerHTML]="newsDetail.content | sanitizeHtml"></span>
+</mat-dialog-content>

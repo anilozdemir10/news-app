@@ -21,14 +21,14 @@
 
   <mat-table [dataSource]="dataSource" matSort class="mat-elevation-z0">
 
-    <ng-container matColumnDef="date">
+    <ng-container matColumnDef="time">
       <mat-header-cell *matHeaderCellDef>Tarih</mat-header-cell>
       <mat-cell *matCellDef="let header">
         {{ header.date | date: "dd/MM/yyyy" }}
       </mat-cell>
     </ng-container>
 
-    <ng-container matColumnDef="time">
+    <ng-container matColumnDef="date">
       <mat-header-cell *matHeaderCellDef mat-sort-header>Saat</mat-header-cell>
       <mat-cell *matCellDef="let header">
         {{ header.date | date: "HH:mm" }}
@@ -38,7 +38,7 @@
     <ng-container matColumnDef="headline">
       <mat-header-cell *matHeaderCellDef>Başlık</mat-header-cell>
       <mat-cell *matCellDef="let header">
-        <a class="news-link" href="javascript:;">
+        <a class="news-link" href="javascript:;" (click)="selectRow(header)">
            <span [ngClass]="isRead(header.id) ? 'news-read': 'news-unread' ">{{ header.headline }}</span>
         </a>
       </mat-cell>
@@ -52,6 +52,6 @@
     </ng-container>
 
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-    <mat-row *matRowDef="let row; columns: displayedColumns" (click)="selectRow(row)"></mat-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
   </mat-table>
 </mat-card>

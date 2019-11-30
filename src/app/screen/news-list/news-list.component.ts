@@ -15,13 +15,12 @@ import { NewsDetailComponent } from '../news-detail/news-detail.component';
 export class NewsListComponent implements OnInit {
   @ViewChild(MatSort, { static: true }) sort: MatSort;
 
-  displayedColumns: string[] = ['date', 'time', 'headline', 'category'];
+  displayedColumns: string[] = ['time', 'date', 'headline', 'category'];
   categories: NewsCategory[];
-  headers;
+  headers: NewsHeader[];
   dataSource: any;
 
   headerFilter = '';
-  headerFilter2 = '';
   categoryFilter;
 
   constructor(private dataService: NewsService, public dialog: MatDialog) { }
@@ -35,11 +34,6 @@ export class NewsListComponent implements OnInit {
     this.dataSource = new MatTableDataSource(this.headers);
     this.dataSource.sort = this.sort;
 
-    this.dataSource.sortingDataAccessor = (item, property): string | number => {
-      if (property === 'time') {
-        return new Date(item.date).toUTCString();
-      }
-    };
   }
 
   selectRow(row) {
@@ -68,7 +62,7 @@ export class NewsListComponent implements OnInit {
     }
 
     this.dataSource = new MatTableDataSource(filteredData);
-
+    this.dataSource.sort = this.sort;
   }
 
 }

@@ -1,5 +1,5 @@
 export class NewsHeader {
-  date: Date;
+  date: string;
   category: string;
   id: number;
   headline: string;

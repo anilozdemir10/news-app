@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { NewsService } from 'src/app/service/news.service';
@@ -10,7 +10,8 @@ import { NewsDetailComponent } from '../news-detail/news-detail.component';
 @Component({
   selector: 'app-news-list',
   templateUrl: './news-list.component.html',
-  styleUrls: ['./news-list.component.css']
+  styleUrls: ['./news-list.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class NewsListComponent implements OnInit {
   @ViewChild(MatSort, { static: true }) sort: MatSort;

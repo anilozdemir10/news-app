@@ -1,7 +1,7 @@
 <mat-card>
   <mat-form-field>
     <mat-label>Kategori</mat-label>
-    <mat-select [(ngModel)]="categoryFilter" (selectionChange)="applyFilter($event.target)">
+    <mat-select [(ngModel)]="categoryFilter" (selectionChange)="applyFilter()">
       <mat-option>Tümü</mat-option>
       <mat-option *ngFor="let category of categories" [value]="category.code">
         {{ category.description }}
@@ -13,7 +13,7 @@
     <input
       matInput
       [(ngModel)]="headerFilter"
-      (keyup)="applyFilter($event.target.value)"
+      (keyup)="applyFilter()"
       placeholder="Haber başlıklarında ara"
     />
     <mat-icon matSuffix>search</mat-icon>
